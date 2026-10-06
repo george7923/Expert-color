@@ -14,6 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Static files are collected at build time for production; the settings need a non-default key when DEBUG is off.
+RUN DJANGO_DEBUG=False DJANGO_SECRET_KEY=build-only python manage.py collectstatic --noinput
+
 COPY entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
 

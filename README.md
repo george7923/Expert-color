@@ -15,3 +15,12 @@ docker compose up --build
 On start-up the container applies migrations and runs `python manage.py creeaza_owner`, which creates the owner from `OWNER_USERNAME` / `OWNER_PASSWORD` / `OWNER_EMAIL` if no user exists yet.
 
 If you ran an earlier version, reset its database first: `docker compose down -v`.
+
+## Deploy (VPS + Docker + Caddy)
+
+Production uses `docker-compose.prod.yml` (gunicorn, Postgres, and Caddy for automatic HTTPS) and `Caddyfile`, which names the domain.
+
+1. Point the domain's DNS `A` records (`@` and `www`) at the server's IP.
+2. On the server (Docker installed, ports 80 and 443 open): clone the repo, then `cp .env.prod.example .env` and fill in every value.
+3. `docker compose -f docker-compose.prod.yml up -d --build`
+4. Update later with `git pull` and the same `up -d --build`.

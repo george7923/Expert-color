@@ -1,0 +1,8 @@
+spray-auto-cod-culoare-expert-color.com {
+	redir https://www.spray-auto-cod-culoare-expert-color.com{uri} permanent
+}
+
+www.spray-auto-cod-culoare-expert-color.com {
+	encode zstd gzip
+	reverse_proxy web:8000
+}
