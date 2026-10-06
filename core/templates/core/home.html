@@ -1,23 +1,10 @@
-{% load static %}<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Expert Color – Spray vopsea auto, doar {{ pret_spray }} lei</title>
-  <meta name="description" content="Vopsea auto preparată după codul de culoare al mașinii tale: spray, marker, punctator și sticluță de retuș.">
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="{% static 'core/css/site.css' %}">
-</head>
-<body>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="icon-car" viewBox="0 0 64 44">
-      <path d="M9 24 15 9q1.5-4 6-4h22q4.5 0 6 4l6 15q5 1 5 6v6H55v6h-9v-6H18v6H9v-6H4v-6q0-5 5-6Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M17 23 21 12h22l4 11Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-      <circle cx="15" cy="31" r="3" fill="currentColor"/><circle cx="49" cy="31" r="3" fill="currentColor"/>
-    </symbol>
-  </svg>
+{% extends "core/base.html" %}
 
-  <main class="poster-wrap">
+{% block title %}{{ site.name }} – Spray vopsea auto, doar {{ pret_spray }} lei{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="poster-wrap">
     <div class="poster-fit">
     <section class="poster" aria-label="Produse Expert Color">
       <div class="sky" aria-hidden="true"></div>
@@ -84,8 +71,42 @@
       <label for="cod">Codul de culoare al mașinii tale</label>
       <input id="cod" type="text" value="{{ cod_culoare }}" maxlength="10" autocomplete="off" spellcheck="false">
     </form>
-  </main>
+  </div>
+</section>
 
-  <script src="{% static 'core/js/site.js' %}"></script>
-</body>
-</html>
+<section class="section" id="produse">
+  <h2>Produse</h2>
+  <p class="lead">Toate se prepară după codul de culoare al mașinii tale.</p>
+  <ul class="cards">
+    {% for p in produse %}
+    <li class="card">
+      <h3>{{ p.nume }}</h3>
+      <p>{{ p.descriere }}</p>
+      <p class="card-price"><b>{{ p.pret }}</b> lei</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="section section--tinted" id="cum-functioneaza">
+  <h2>Cum funcționează</h2>
+  <ol class="steps">
+    <li><b>1</b><h3>Găsește codul culorii</h3><p>Îl găsești pe eticheta de identificare a mașinii. De exemplu: <strong>LY9B</strong>.</p></li>
+    <li><b>2</b><h3>Alege produsul</h3><p>Spray, marker, punctator sau sticluță de retuș, în funcție de dimensiunea zgârieturii.</p></li>
+    <li><b>3</b><h3>Îți pregătim vopseaua</h3><p>Vopseaua se prepară după codul tău de culoare, ca să se potrivească cu mașina.</p></li>
+  </ol>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contact</h2>
+  {% if site.address or site.phone or site.email %}
+  <ul class="contact">
+    {% if site.address %}<li><span>Adresă</span> {{ site.address }}</li>{% endif %}
+    {% if site.phone %}<li><span>Telefon</span> <a href="tel:{{ site.phone_href }}">{{ site.phone }}</a></li>{% endif %}
+    {% if site.email %}<li><span>Email</span> <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
+  </ul>
+  {% else %}
+  <p class="lead">Datele de contact vor fi afișate aici.</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site.name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}Vopsea auto preparată după codul de culoare al mașinii tale: spray, marker, punctator și sticluță de retuș.{% endblock %}">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="{% static 'core/css/site.css' %}">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="icon-car" viewBox="0 0 64 44">
+      <path d="M9 24 15 9q1.5-4 6-4h22q4.5 0 6 4l6 15q5 1 5 6v6H55v6h-9v-6H18v6H9v-6H4v-6q0-5 5-6Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M17 23 21 12h22l4 11Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="15" cy="31" r="3" fill="currentColor"/><circle cx="49" cy="31" r="3" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+
+  <a class="skip" href="#continut">Sari la conținut</a>
+
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="{% url 'home' %}"><svg aria-hidden="true"><use href="#icon-car"/></svg> {{ site.name }}</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Meniu"><span></span></button>
+      <nav id="nav" class="nav" aria-label="Principal">
+        <a href="#produse">Produse</a>
+        <a href="#cum-functioneaza">Cum funcționează</a>
+        <a href="#contact">Contact</a>
+        {% if site.phone %}<a class="cta" href="tel:{{ site.phone_href }}">{{ site.phone }}</a>{% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main id="continut">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-info">
+        <p class="brand"><svg aria-hidden="true"><use href="#icon-car"/></svg> {{ site.name }}</p>
+        <p>Vopsea auto preparată după codul de culoare al mașinii tale.</p>
+        <ul>
+          <li><a href="#produse">Produse</a></li>
+          <li><a href="#cum-functioneaza">Cum funcționează</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="copy">© {% now "Y" %} {{ site.name }}. Toate drepturile rezervate.</p>
+      </div>
+      {% if site.maps_url %}
+      <div class="footer-map">
+        <iframe title="Locația {{ site.name }} pe Google Maps" src="{{ site.maps_url }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      {% endif %}
+    </div>
+  </footer>
+
+  <script src="{% static 'core/js/site.js' %}"></script>
+</body>
+</html>

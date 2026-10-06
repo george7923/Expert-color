@@ -1,6 +1,16 @@
 (function () {
   "use strict";
 
+  // Mobile menu.
+  var header = document.querySelector(".site-header");
+  var toggle = header.querySelector(".nav-toggle");
+  function setMenu(open) {
+    header.classList.toggle("nav-open", open);
+    toggle.setAttribute("aria-expanded", open);
+  }
+  toggle.addEventListener("click", function () { setMenu(!header.classList.contains("nav-open")); });
+  header.querySelectorAll(".nav a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+
   // Color swatch fan behind the products.
   var fan = document.getElementById("fan");
   var palette = [

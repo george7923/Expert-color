@@ -29,6 +29,10 @@ services:
       OWNER_USERNAME: ${OWNER_USERNAME:-owner}
       OWNER_PASSWORD: ${OWNER_PASSWORD:-change-me}
       OWNER_EMAIL: ${OWNER_EMAIL:-}
+      SITE_ADDRESS: ${SITE_ADDRESS:-}
+      SITE_PHONE: ${SITE_PHONE:-}
+      SITE_EMAIL: ${SITE_EMAIL:-}
+      MAPS_EMBED_URL: ${MAPS_EMBED_URL:-}
     volumes:
       - .:/app
     ports:

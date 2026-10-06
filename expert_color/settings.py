@@ -45,6 +45,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.site",
             ],
         },
     },
@@ -80,3 +81,11 @@ STATIC_URL = "static/"
 AUTH_USER_MODEL = "core.Utilizator"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Public contact details shown in the header/footer; leave empty to hide an item.
+SITE_NAME = "Expert Color"
+SITE_ADDRESS = os.environ.get("SITE_ADDRESS", "")
+SITE_PHONE = os.environ.get("SITE_PHONE", "")
+SITE_EMAIL = os.environ.get("SITE_EMAIL", "")
+# Optional: the src of Google Maps' "Share > Embed a map" iframe. Falls back to a search for SITE_ADDRESS.
+MAPS_EMBED_URL = os.environ.get("MAPS_EMBED_URL", "")
