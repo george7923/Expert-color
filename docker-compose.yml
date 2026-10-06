@@ -28,6 +28,9 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-postgres}
       DB_HOST: db
       DB_PORT: 5432
+      OWNER_USERNAME: ${OWNER_USERNAME:-owner}
+      OWNER_PASSWORD: ${OWNER_PASSWORD:-change-me}
+      OWNER_EMAIL: ${OWNER_EMAIL:-}
     volumes:
       - .:/app
     ports:

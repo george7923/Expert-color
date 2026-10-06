@@ -16,5 +16,6 @@ done
 echo "Database is up."
 
 python manage.py migrate --noinput
+python manage.py creeaza_owner
 
 exec "$@"

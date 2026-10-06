@@ -1,47 +1,14 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-from .models import (
-    Adresa,
-    AdresaUtilizator,
-    Card,
-    Categorie,
-    Comanda,
-    Cos,
-    Imagine,
-    Judet,
-    Localitate,
-    Marca,
-    ModelAuto,
-    Persoana,
-    PretProdus,
-    Produs,
-    Strada,
-    Subcomanda,
-    Subprodus,
-    Tara,
-    Utilizator,
-    UtilizatorCard,
-    Vopsea,
-)
+from .models import Rol, Utilizator
 
-admin.site.register(Tara)
-admin.site.register(Judet)
-admin.site.register(Localitate)
-admin.site.register(Strada)
-admin.site.register(Adresa)
-admin.site.register(Marca)
-admin.site.register(ModelAuto)
-admin.site.register(Categorie)
-admin.site.register(Persoana)
-admin.site.register(Utilizator)
-admin.site.register(AdresaUtilizator)
-admin.site.register(Card)
-admin.site.register(UtilizatorCard)
-admin.site.register(Produs)
-admin.site.register(Imagine)
-admin.site.register(PretProdus)
-admin.site.register(Vopsea)
-admin.site.register(Cos)
-admin.site.register(Subprodus)
-admin.site.register(Comanda)
-admin.site.register(Subcomanda)
+
+@admin.register(Utilizator)
+class UtilizatorAdmin(UserAdmin):
+    list_display = ("username", "email", "rol", "is_active")
+    fieldsets = UserAdmin.fieldsets + (("Rol", {"fields": ("rol",)}),)
+    add_fieldsets = UserAdmin.add_fieldsets + (("Rol", {"fields": ("rol",)}),)
+
+
+admin.site.register(Rol)

@@ -1,0 +1,200 @@
+/* The poster is drawn at 775 design px wide; 1px equals one design px and scales with the container. */
+
+:root {
+  --navy: #0d1b3d;
+  --red: #e30613;
+  --metal: linear-gradient(90deg, #4a4c4f 0%, #8d9094 14%, #d5d6d8 30%, #9a9c9f 52%, #62646a 78%, #3a3c40 100%);
+  --metal-v: linear-gradient(180deg, #e9eaec, #a6a8ab 45%, #6d6f73);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ul { list-style: none; }
+
+body {
+  background: #d9dfe5;
+  color: var(--navy);
+  font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 900;
+}
+
+.poster-wrap { max-width: 900px; margin: 0 auto; }
+.poster-fit { overflow: hidden; }
+
+.poster {
+  width: 775px;
+  height: 900px;
+  transform-origin: 0 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #cfe1f1;
+}
+
+/* ---- background ---- */
+.sky {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(60px 50px at 0% 20%, rgba(96, 148, 76, .55), transparent 70%),
+    radial-gradient(40px 40px at 100% 5%, rgba(98, 150, 80, .5), transparent 70%),
+    radial-gradient(30px 50px at 62% 28%, rgba(120, 130, 140, .35), transparent 70%),
+    linear-gradient(180deg, #f1f7fc 0%, #cfe1f1 45%, #a9c1d4 75%);
+}
+
+.fan { position: absolute; left: 0; top: 210px; width: 330px; height: 480px; z-index: 1; }
+.fan i {
+  position: absolute; left: 12px; top: 235px;
+  width: 300px; height: 44px;
+  border-radius: 3px 8px 8px 3px;
+  transform-origin: 0 50%;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .6);
+}
+
+.car { position: absolute; left: 355px; top: 150px; width: 420px; z-index: 1; filter: drop-shadow(-6px 8px 14px rgba(0, 0, 0, .35)); }
+
+.color-tag {
+  position: absolute; left: 580px; top: 335px; z-index: 2;
+  display: grid; grid-template-columns: auto auto; gap: 2px 8px; align-items: center;
+  padding: 10px 14px; border-radius: 6px;
+  background: #f4f6f8; color: #222; transform: rotate(-4deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .3);
+  font-size: 13px; line-height: 1.1;
+}
+.color-tag span { grid-column: 1 / -1; font-weight: 800; }
+.color-tag b { font-size: 22px; }
+.color-tag .swatch { width: 38px; height: 24px; background: #9a9da1; border: 1px solid #b9bcc0; }
+
+/* ---- headline ---- */
+.headline { position: absolute; top: 18px; left: 0; right: 0; z-index: 3; text-align: center; padding: 0 20px; }
+.headline h1 { font-size: 50px; line-height: 1; letter-spacing: -.02em; text-transform: uppercase; white-space: nowrap; }
+.headline h1 span { display: block; }
+.headline .l2 { font-size: 88px; line-height: 1.02; }
+.headline em { font-style: normal; color: var(--red); text-shadow: 0 0 0 #fff, 2px 2px 0 rgba(255, 255, 255, .85), -2px -2px 0 rgba(255, 255, 255, .85), 2px -2px 0 rgba(255, 255, 255, .85), -2px 2px 0 rgba(255, 255, 255, .85); }
+.headline p { margin-top: 6px; font-size: 28px; font-weight: 800; font-family: "Helvetica Neue", Arial, sans-serif; letter-spacing: -.01em; }
+
+/* ---- table surface ---- */
+.surface {
+  position: absolute; left: 0; right: 0; top: 640px; bottom: 0; z-index: 2;
+  background: linear-gradient(180deg, #d4d8dc 0, #b4b9be 6%, #9ba1a7 100%);
+  border-top: 2px solid rgba(255, 255, 255, .6);
+}
+.brandbar {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 28px; z-index: 3;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--navy); color: #fff; border-radius: 22px 22px 0 0 / 14px;
+  font-size: 13px; letter-spacing: .25em; text-transform: uppercase;
+}
+.brandbar svg { width: 34px; height: 22px; }
+
+.mist { position: absolute; left: 0; top: 0; width: 775px; height: 900px; z-index: 6; pointer-events: none; }
+
+/* ---- products ---- */
+.products {
+  position: absolute; left: 30px; right: 30px; top: 245px; bottom: 80px; z-index: 4;
+  display: grid; grid-template-columns: 200fr 150fr 150fr 170fr; align-items: end; justify-items: center;
+}
+.product { display: flex; flex-direction: column; align-items: center; }
+.product .drawing { margin-bottom: 18px; }
+.product h2 {
+  height: 36px; display: flex; align-items: flex-end; text-align: center;
+  font-size: 15px; line-height: 1.1; text-transform: uppercase; letter-spacing: -.01em;
+}
+.price {
+  margin-top: 6px; min-width: 150px; padding: 5px 18px 8px; text-align: center;
+  background: var(--red); color: #fff; font-size: 24px; line-height: 1; text-transform: uppercase;
+  transform: skewX(-8deg) rotate(-1.5deg);
+  clip-path: polygon(2% 12%, 12% 0, 30% 6%, 52% 0, 76% 5%, 100% 0, 97% 30%, 100% 62%, 96% 100%, 70% 94%, 46% 100%, 20% 95%, 0 100%, 3% 55%);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .3));
+}
+.price b { font-size: 2.1em; }
+.product--spray .price { font-size: 30px; min-width: 190px; padding: 8px 22px 10px; }
+
+/* shared parts */
+.drawing i { display: block; }
+.icon { width: 1em; height: .7em; }
+.code { display: block; white-space: nowrap; overflow: hidden; background: #f1f1f1; color: #222; text-align: center; border-radius: 4px; line-height: 1; }
+.code small { display: block; font-size: .42em; font-weight: 800; text-transform: uppercase; margin-bottom: 2px; }
+.name { text-transform: uppercase; text-align: center; line-height: 1.05; color: #f4f4f4; text-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+.name small { font-size: .62em; font-weight: 800; }
+
+/* ---- spray can ---- */
+.spray { width: 176px; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(8px 14px 12px rgba(0, 0, 0, .35)); }
+.spray .nozzle { width: 56px; height: 42px; background: linear-gradient(90deg, #cfd3d6, #fff 40%, #d6d9dc); border-radius: 10px 10px 3px 3px; position: relative; }
+.spray .nozzle::after { content: ""; position: absolute; left: 4px; top: 8px; width: 14px; height: 6px; border-radius: 3px; background: #aeb3b8; }
+.spray .collar { width: 86px; height: 22px; background: var(--metal); border-radius: 4px; }
+.spray .rim { width: 108px; height: 14px; background: var(--metal); border-radius: 50%/100% 100% 0 0; }
+.spray .shoulder { width: 176px; height: 62px; background: var(--metal); border-radius: 50% 50% 0 0 / 100% 100% 0 0; margin-top: -2px; }
+.spray .can {
+  width: 176px; height: 360px; margin-top: -1px; background: var(--metal);
+  border-radius: 0 0 14px 14px / 0 0 10px 10px; border-bottom: 8px solid #8d9094;
+  display: flex; flex-direction: column; align-items: center; padding-top: 42px;
+  font-size: 26px; color: #f4f4f4;
+}
+.spray .icon { width: 2em; height: 1.4em; }
+.spray .name { margin-top: 10px; }
+.spray .code { width: 4.3em; margin-top: 90px; padding: 6px 0 8px; font-size: 24px; }
+.spray .code small { font-size: 10px; }
+
+/* ---- marker ---- */
+.marker { width: 73px; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(6px 10px 8px rgba(0, 0, 0, .35)); }
+.marker .cap {
+  width: 64px; height: 150px; border-radius: 12px 12px 3px 3px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, .13) 0 2px, transparent 2px 10px) bottom / 100% 62% no-repeat,
+    linear-gradient(90deg, #08090a, #3a3c3f 35%, #111 70%, #000);
+}
+.marker .ring { width: 70px; height: 10px; background: var(--metal); }
+.marker .tube {
+  width: 73px; height: 255px; background: var(--metal); border-radius: 0 0 14px 14px;
+  display: flex; flex-direction: column; align-items: center; padding-top: 52px; font-size: 14px;
+}
+.marker .icon { width: 2.3em; height: 1.6em; }
+.marker .name { margin-top: 8px; font-size: 1em; }
+.marker .code { width: 3.7em; margin-top: 22px; padding: 6px 0; font-size: 1.1em; }
+
+/* ---- punctator ---- */
+.punctator { width: 66px; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(6px 10px 8px rgba(0, 0, 0, .35)); }
+.punctator .bristle { width: 8px; height: 30px; background: linear-gradient(90deg, #8a5a26, #d9a566); clip-path: polygon(30% 100%, 70% 100%, 100% 30%, 55% 0, 45% 0, 0 30%); margin-bottom: -4px; position: relative; z-index: 1; }
+.punctator .cap {
+  width: 46px; height: 112px; clip-path: polygon(28% 0, 72% 0, 100% 100%, 0 100%);
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, .14) 0 2px, transparent 2px 9px) bottom / 100% 55% no-repeat,
+    linear-gradient(90deg, #08090a, #3d3f42 35%, #111 72%, #000);
+}
+.punctator .ring { width: 54px; height: 8px; background: var(--metal); }
+.punctator .tube {
+  width: 66px; height: 252px; background: var(--metal); border-radius: 0 0 12px 12px;
+  display: flex; flex-direction: column; align-items: center; padding-top: 48px; font-size: 13px;
+}
+.punctator .icon { width: 2.3em; height: 1.6em; }
+.punctator .name { margin-top: 8px; font-size: 1em; }
+.punctator .code { width: 3.6em; margin-top: 18px; padding: 6px 0; font-size: 1.1em; }
+
+/* ---- touch-up bottle ---- */
+.bottle { width: 107px; display: flex; flex-direction: column; align-items: center; filter: drop-shadow(6px 10px 8px rgba(0, 0, 0, .3)); }
+.bottle .cap {
+  width: 98px; height: 58px; border-radius: 5px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .13) 0 2px, transparent 2px 7px),
+    linear-gradient(90deg, #08090a, #333 40%, #0d0d0e);
+}
+.bottle .neck { width: 76px; height: 12px; background: linear-gradient(90deg, #cfd5da, #fff 45%, #aeb5bb); }
+.bottle .glass {
+  width: 107px; height: 170px; border-radius: 10px 10px 18px 18px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .75) 0 6%, transparent 18% 80%, rgba(255, 255, 255, .45) 92%),
+    linear-gradient(180deg, rgba(255, 255, 255, .55) 0 12%, #8f9398 12%, #5e6267);
+  border: 2px solid rgba(255, 255, 255, .6);
+  display: flex; flex-direction: column; align-items: center; padding-top: 28px; font-size: 14px;
+}
+.bottle .icon { width: 2.3em; height: 1.6em; color: #fff; }
+.bottle .name { margin-top: 6px; font-size: 1em; }
+.bottle .code { width: 3.7em; margin-top: 10px; padding: 6px 0; font-size: 1.1em; }
+
+/* ---- color code input ---- */
+.codebar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: center; padding: 18px 16px 28px; font-family: "Helvetica Neue", Arial, sans-serif; }
+.codebar label { font-weight: 700; }
+.codebar input {
+  width: 9em; padding: 10px 12px; border: 2px solid var(--navy); border-radius: 8px;
+  font: 800 1.2rem "Helvetica Neue", Arial, sans-serif; letter-spacing: .08em; text-align: center; text-transform: uppercase;
+}
+.codebar input:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
