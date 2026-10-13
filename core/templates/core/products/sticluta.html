@@ -1,8 +1,50 @@
-<div class="bottle">
-  <i class="cap"></i><i class="neck"></i>
-  <div class="glass">
+<div class="obj bottle">
+  <svg viewBox="0 0 96 264" width="96" height="264" aria-hidden="true">
+    <defs>
+      <linearGradient id="bt-black" x1="0" x2="1">
+        <stop offset="0" stop-color="#040404"/><stop offset=".2" stop-color="#37373d"/><stop offset=".36" stop-color="#141417"/>
+        <stop offset=".75" stop-color="#09090a"/><stop offset=".92" stop-color="#26262a"/><stop offset="1" stop-color="#000"/>
+      </linearGradient>
+      <linearGradient id="bt-glass" x1="0" x2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".16" stop-color="#fff" stop-opacity=".12"/>
+        <stop offset=".5" stop-color="#fff" stop-opacity=".04"/><stop offset=".84" stop-color="#fff" stop-opacity=".14"/>
+        <stop offset="1" stop-color="#fff" stop-opacity=".55"/>
+      </linearGradient>
+      <linearGradient id="bt-liquid" x1="0" x2="1">
+        <stop offset="0" style="stop-color:color-mix(in srgb, var(--paint) 50%, black)"/>
+        <stop offset=".3" style="stop-color:color-mix(in srgb, var(--paint) 75%, white)"/>
+        <stop offset=".55" style="stop-color:var(--paint)"/>
+        <stop offset="1" style="stop-color:color-mix(in srgb, var(--paint) 45%, black)"/>
+      </linearGradient>
+      <filter id="bt-blur"><feGaussianBlur stdDeviation="1.4"/></filter>
+      <clipPath id="bt-inner"><path d="M33 104H63C63 114 90 116 90 140V242Q90 258 74 258H22Q6 258 6 242V140C6 116 33 114 33 104Z"/></clipPath>
+    </defs>
+    <!-- glass body, shoulder and neck -->
+    <path d="M32 82H64V104C64 116 92 114 92 140V244Q92 260 76 260H20Q4 260 4 244V140C4 114 32 116 32 104Z" fill="url(#bt-glass)" stroke="#fff" stroke-opacity=".6" stroke-width="1.2"/>
+    <!-- paint and brush inside -->
+    <g clip-path="url(#bt-inner)">
+      <rect x="0" y="158" width="96" height="104" fill="url(#bt-liquid)"/>
+      <ellipse cx="48" cy="158" rx="42" ry="5" style="fill:color-mix(in srgb, var(--paint) 60%, white)"/>
+    </g>
+    <rect x="45" y="80" width="6" height="64" fill="#0b0b0c"/>
+    <path d="M42 140H54Q59 160 56 184Q48 191 40 184Q37 160 42 140Z" fill="#0b0b0c"/>
+    <path d="M45 146V180M48 144V186M51 146V180" stroke="#fff" stroke-opacity=".12"/>
+    <!-- highlights -->
+    <rect x="10" y="132" width="6" height="114" rx="3" fill="#fff" fill-opacity=".5" filter="url(#bt-blur)"/>
+    <rect x="82" y="140" width="3" height="102" rx="1.5" fill="#fff" fill-opacity=".25" filter="url(#bt-blur)"/>
+    <path d="M26 120C16 124 10 128 9 138" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="8" y="252" width="80" height="6" rx="3" fill="#fff" fill-opacity=".22"/>
+    <!-- screw cap -->
+    <path d="M22 10Q22 0 32 0H64Q74 0 74 10V80H22Z" fill="url(#bt-black)"/>
+    <g stroke="#fff" stroke-opacity=".09" stroke-width="1.5">
+      <path d="M27 8V76M32 4V76M37 4V76M42 4V76M47 4V76M52 4V76M57 4V76M62 4V76M67 4V76M70 8V76"/>
+    </g>
+    <rect x="28" y="8" width="6" height="66" rx="3" fill="#fff" fill-opacity=".28" filter="url(#bt-blur)"/>
+    <rect x="20" y="77" width="56" height="6" rx="2.5" fill="#000"/>
+  </svg>
+  <div class="label label--sticker">
     <svg class="icon"><use href="#icon-car"/></svg>
-    <span class="name">Sticluță<br>retuș</span>
+    <span class="name">Sticluță<br>de retuș</span>
     <span class="code"><b data-color-code></b></span>
   </div>
 </div>

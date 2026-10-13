@@ -1,6 +1,47 @@
-<div class="spray">
-  <i class="nozzle"></i><i class="collar"></i><i class="rim"></i><i class="shoulder"></i>
-  <div class="can">
+<div class="obj spray">
+  <svg viewBox="0 0 176 490" width="176" height="490" aria-hidden="true">
+    <defs>
+      <linearGradient id="sp-body" x1="0" x2="1">
+        <stop offset="0" stop-color="#000"/><stop offset=".08" stop-color="#1b1b1f"/><stop offset=".22" stop-color="#3b3b42"/>
+        <stop offset=".31" stop-color="#1a1a1e"/><stop offset=".55" stop-color="#09090b"/><stop offset=".8" stop-color="#18181b"/>
+        <stop offset=".92" stop-color="#2b2b30"/><stop offset="1" stop-color="#000"/>
+      </linearGradient>
+      <linearGradient id="sp-cap" x1="0" x2="1">
+        <stop offset="0" style="stop-color:color-mix(in srgb, var(--paint) 55%, black)"/>
+        <stop offset=".25" style="stop-color:color-mix(in srgb, var(--paint) 65%, white)"/>
+        <stop offset=".5" style="stop-color:var(--paint)"/>
+        <stop offset="1" style="stop-color:color-mix(in srgb, var(--paint) 40%, black)"/>
+      </linearGradient>
+      <linearGradient id="sp-metal" x1="0" x2="1">
+        <stop offset="0" stop-color="#6b6e73"/><stop offset=".2" stop-color="#d9dcdf"/><stop offset=".4" stop-color="#fff"/>
+        <stop offset=".65" stop-color="#9a9da2"/><stop offset=".85" stop-color="#c9ccd0"/><stop offset="1" stop-color="#5d6065"/>
+      </linearGradient>
+      <filter id="sp-blur"><feGaussianBlur stdDeviation="2"/></filter>
+    </defs>
+    <!-- can body with domed shoulder -->
+    <path d="M40 108C38 128 8 142 4 196V466Q4 480 18 480H158Q172 480 172 466V196C168 142 138 128 136 108Z" fill="url(#sp-body)"/>
+    <path d="M46 126C32 148 20 160 16 200" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="6" stroke-linecap="round" filter="url(#sp-blur)"/>
+    <rect x="22" y="214" width="11" height="246" rx="5.5" fill="#fff" fill-opacity=".26" filter="url(#sp-blur)"/>
+    <rect x="151" y="214" width="5" height="246" rx="2.5" fill="#fff" fill-opacity=".1" filter="url(#sp-blur)"/>
+    <!-- paint-colored band -->
+    <rect x="4" y="428" width="168" height="11" fill="url(#sp-cap)"/>
+    <!-- bottom seam -->
+    <path d="M4 466H172V470Q172 480 158 480H18Q4 480 4 470Z" fill="url(#sp-metal)"/>
+    <rect x="4" y="464" width="168" height="2" fill="#000" fill-opacity=".5"/>
+    <!-- mounting cup -->
+    <rect x="34" y="97" width="108" height="14" rx="3" fill="url(#sp-metal)"/>
+    <path d="M34 104H142" stroke="#000" stroke-opacity=".25"/>
+    <!-- overcap -->
+    <path d="M46 98L51 58Q52 50 60 50H116Q124 50 125 58L130 98Z" fill="url(#sp-cap)"/>
+    <rect x="58" y="58" width="8" height="36" rx="4" fill="#fff" fill-opacity=".35" filter="url(#sp-blur)"/>
+    <rect x="46" y="92" width="84" height="6" fill="#000" fill-opacity=".2"/>
+    <!-- actuator button, orifice facing right -->
+    <path d="M72 54V20Q72 6 86 6H90Q104 6 104 20V54Z" fill="url(#sp-cap)"/>
+    <rect x="77" y="12" width="5" height="34" rx="2.5" fill="#fff" fill-opacity=".4" filter="url(#sp-blur)"/>
+    <ellipse cx="103.5" cy="22" rx="2.6" ry="5" fill="#0d0d0f"/>
+  </svg>
+  <i class="nozzle"></i>
+  <div class="label label--print">
     <svg class="icon"><use href="#icon-car"/></svg>
     <span class="name">Vopsea<br>auto</span>
     <span class="code"><small>Color code:</small><b data-color-code></b></span>

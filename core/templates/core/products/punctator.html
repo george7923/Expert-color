@@ -1,8 +1,47 @@
-<div class="punctator">
-  <i class="bristle"></i><i class="cap"></i><i class="ring"></i>
-  <div class="tube">
+<div class="obj punctator">
+  <svg viewBox="0 0 64 400" width="64" height="400" aria-hidden="true">
+    <defs>
+      <linearGradient id="pn-glass" x1="0" x2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".18" stop-color="#fff" stop-opacity=".12"/>
+        <stop offset=".5" stop-color="#fff" stop-opacity=".05"/><stop offset=".82" stop-color="#fff" stop-opacity=".14"/>
+        <stop offset="1" stop-color="#fff" stop-opacity=".55"/>
+      </linearGradient>
+      <linearGradient id="pn-liquid" x1="0" x2="1">
+        <stop offset="0" style="stop-color:color-mix(in srgb, var(--paint) 50%, black)"/>
+        <stop offset=".3" style="stop-color:color-mix(in srgb, var(--paint) 75%, white)"/>
+        <stop offset=".55" style="stop-color:var(--paint)"/>
+        <stop offset="1" style="stop-color:color-mix(in srgb, var(--paint) 45%, black)"/>
+      </linearGradient>
+      <linearGradient id="pn-ivory" x1="0" x2="1">
+        <stop offset="0" stop-color="#bfc3c8"/><stop offset=".3" stop-color="#fff"/><stop offset=".7" stop-color="#e9ecef"/><stop offset="1" stop-color="#a9adb3"/>
+      </linearGradient>
+      <radialGradient id="pn-ball" cx=".35" cy=".3" r=".8">
+        <stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#b9bdc2"/><stop offset="1" stop-color="#4b4e53"/>
+      </radialGradient>
+      <filter id="pn-blur"><feGaussianBlur stdDeviation="1.2"/></filter>
+    </defs>
+    <!-- applicator nib inside the cap -->
+    <path d="M27 44H37L46 124H18Z" fill="url(#pn-ivory)"/>
+    <path d="M27.5 46Q29 26 32 14Q35 26 36.5 46Z" style="fill:var(--paint)"/>
+    <rect x="22" y="78" width="20" height="4" fill="#d3202b"/>
+    <!-- clear cap -->
+    <path d="M23 12Q23 0 32 0Q41 0 41 12L58 120V132H6V120Z" fill="url(#pn-glass)" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/>
+    <path d="M25 18L12 112" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round" filter="url(#pn-blur)"/>
+    <!-- white collar -->
+    <rect x="5" y="128" width="54" height="15" rx="3.5" fill="url(#pn-ivory)"/>
+    <rect x="5" y="139" width="54" height="4" rx="2" fill="#000" fill-opacity=".14"/>
+    <!-- clear barrel with paint -->
+    <path d="M8 143H56V386Q56 396 46 396H18Q8 396 8 386Z" fill="url(#pn-glass)" stroke="#fff" stroke-opacity=".6" stroke-width="1.2"/>
+    <path d="M10 198Q32 193 54 198V384Q54 392 46 392H18Q10 392 10 384Z" fill="url(#pn-liquid)"/>
+    <ellipse cx="32" cy="196" rx="22" ry="3.5" style="fill:color-mix(in srgb, var(--paint) 60%, white)"/>
+    <circle cx="32" cy="345" r="8" fill="url(#pn-ball)"/>
+    <rect x="13" y="150" width="6" height="234" rx="3" fill="#fff" fill-opacity=".5" filter="url(#pn-blur)"/>
+    <rect x="49" y="150" width="3" height="234" rx="1.5" fill="#fff" fill-opacity=".25" filter="url(#pn-blur)"/>
+    <rect x="9" y="388" width="46" height="8" rx="4" fill="#fff" fill-opacity=".22"/>
+  </svg>
+  <div class="label label--sticker">
     <svg class="icon"><use href="#icon-car"/></svg>
-    <span class="name">Punctator<br><small>vopsea auto</small></span>
+    <span class="name">Punctator</span>
     <span class="code"><b data-color-code></b></span>
   </div>
 </div>

@@ -48,7 +48,7 @@
   // Scale the fixed-size product showcase to the width of its container (up to MAX_SCALE).
   var showcase = document.querySelector(".showcase");
   var wrap = showcase.parentElement;
-  var DESIGN_W = 860, DESIGN_H = 640, MAX_SCALE = 1.3;
+  var DESIGN_W = 860, DESIGN_H = 640, MAX_SCALE = 1.15;
   function fit() {
     var scale = Math.min(MAX_SCALE, wrap.parentElement.clientWidth / DESIGN_W);
     showcase.style.transform = "scale(" + scale + ")";
@@ -65,6 +65,7 @@
   var particles = [];
   var origin = { x: 0, y: 0 }, target = { x: 0, y: 0 };
   var width = 0, height = 0, active = false;
+  var paint = getComputedStyle(hero).getPropertyValue("--paint").trim() || "#fff";
 
   // Position of a point on an element, in hero (CSS) pixels.
   function anchor(selector, fx, fy) {
@@ -110,8 +111,8 @@
     particles.forEach(function (p) {
       p.life++; p.x += p.vx; p.y += p.vy; p.vy += .01;
       var t = p.life / p.max;
-      ctx.globalAlpha = .55 * (1 - t) * Math.min(1, p.life / 6);
-      ctx.fillStyle = "#fff";
+      ctx.globalAlpha = .8 * (1 - t) * Math.min(1, p.life / 6);
+      ctx.fillStyle = paint;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r * (1 + t * 1.5), 0, Math.PI * 2);
       ctx.fill();
