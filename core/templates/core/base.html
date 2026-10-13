@@ -25,10 +25,10 @@
       <a class="brand" href="{% url 'home' %}"><svg aria-hidden="true"><use href="#icon-car"/></svg> {{ site.name }}</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Meniu"><span></span></button>
       <nav id="nav" class="nav" aria-label="Principal">
-        <a href="#produse">Produse</a>
-        <a href="#cum-functioneaza">Cum funcționează</a>
-        <a href="#in-curand">În curând</a>
-        <a href="#contact">Contact</a>
+        <a href="{% url 'home' %}#produse">Produse</a>
+        <a href="{% url 'home' %}#cum-functioneaza">Cum funcționează</a>
+        <a href="{% url 'home' %}#in-curand">În curând</a>
+        <a href="{% url 'home' %}#contact">Contact</a>
         {% if site.phone %}<a class="cta" href="tel:{{ site.phone_href }}">{{ site.phone }}</a>{% endif %}
       </nav>
     </div>
@@ -44,20 +44,37 @@
         <p class="brand"><svg aria-hidden="true"><use href="#icon-car"/></svg> {{ site.name }}</p>
         <p>Vopsea auto preparată după codul de culoare al mașinii tale.</p>
         <ul>
-          <li><a href="#produse">Produse</a></li>
-          <li><a href="#cum-functioneaza">Cum funcționează</a></li>
-          <li><a href="#in-curand">În curând</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="{% url 'home' %}#produse">Produse</a></li>
+          <li><a href="{% url 'home' %}#cum-functioneaza">Cum funcționează</a></li>
+          <li><a href="{% url 'home' %}#in-curand">În curând</a></li>
+          <li><a href="{% url 'home' %}#contact">Contact</a></li>
         </ul>
-        <p class="copy">© {% now "Y" %} {{ site.name }}. Toate drepturile rezervate.</p>
+        <p class="copy">© {% now "Y" %} {{ site.name }}. Toate drepturile rezervate.
+          · <a href="{% url 'cookies' %}">Politica de cookie-uri</a>
+          · <button type="button" class="linklike" data-consent="open">Setări cookie-uri</button></p>
       </div>
       {% if site.maps_url %}
-      <div class="footer-map">
-        <iframe title="Locația {{ site.name }} pe Google Maps" src="{{ site.maps_url }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="footer-map" id="map" data-src="{{ site.maps_url }}" data-title="Locația {{ site.name }} pe Google Maps">
+        <div class="map-gate">
+          <p>Harta Google Maps folosește cookie-uri de la Google. Ca s-o afișezi, ai nevoie de acordul tău.</p>
+          <button type="button" class="btn btn--red" data-consent="accept">Accept și afișează harta</button>
+          {% if site.maps_link %}<a href="{{ site.maps_link }}" target="_blank" rel="noopener">sau deschide locația în Google Maps</a>{% endif %}
+        </div>
       </div>
       {% endif %}
     </div>
   </footer>
+
+  <div class="consent" id="consent" role="dialog" aria-modal="false" aria-labelledby="consent-title" hidden>
+    <div class="consent-text">
+      <p id="consent-title"><strong>Cookie-uri</strong></p>
+      <p>Folosim doar cookie-uri de la terți (Google Maps) și numai cu acordul tău. Fără ele, site-ul funcționează normal. <a href="{% url 'cookies' %}">Află mai multe</a>.</p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" class="btn btn--plain" data-consent="reject">Refuz</button>
+      <button type="button" class="btn btn--plain" data-consent="accept">Accept</button>
+    </div>
+  </div>
 
   <script src="{% static 'core/js/site.js' %}"></script>
 </body>

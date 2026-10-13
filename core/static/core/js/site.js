@@ -11,6 +11,52 @@
   toggle.addEventListener("click", function () { setMenu(!header.classList.contains("nav-open")); });
   header.querySelectorAll(".nav a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
 
+  // Cookie consent: the Google Maps iframe is only loaded after the visitor accepts.
+  var KEY = "cookie_consent", MAX_AGE = 180 * 24 * 3600 * 1000;
+  var banner = document.getElementById("consent");
+  var mapBox = document.getElementById("map");
+
+  function readConsent() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY));
+      if (saved && (saved.value === "accepted" || saved.value === "rejected") && Date.now() - saved.time < MAX_AGE) return saved.value;
+    } catch (e) { /* storage unavailable: ask again */ }
+    return null;
+  }
+  function saveConsent(value) {
+    try { localStorage.setItem(KEY, JSON.stringify({ value: value, time: Date.now() })); } catch (e) { /* ignore */ }
+  }
+  function showMap() {
+    if (!mapBox || mapBox.querySelector("iframe")) return;
+    var frame = document.createElement("iframe");
+    frame.src = mapBox.dataset.src;
+    frame.title = mapBox.dataset.title;
+    frame.loading = "lazy";
+    frame.referrerPolicy = "no-referrer-when-downgrade";
+    frame.allowFullscreen = true;
+    mapBox.replaceChildren(frame);
+  }
+  function applyConsent(value) {
+    saveConsent(value);
+    banner.hidden = true;
+    if (value === "accepted") showMap();
+    else if (mapBox && mapBox.querySelector("iframe")) location.reload(); // drop the third-party frame
+  }
+
+  document.querySelectorAll("[data-consent]").forEach(function (el) {
+    el.addEventListener("click", function () {
+      var action = el.dataset.consent;
+      if (action === "open") banner.hidden = false;
+      else applyConsent(action === "accept" ? "accepted" : "rejected");
+    });
+  });
+  var current = readConsent();
+  if (current === null) banner.hidden = false;
+  else if (current === "accepted") showMap();
+
+  // The rest only applies to the home page.
+  if (!document.querySelector(".showcase")) return;
+
   // Color swatch fan behind the products.
   var fan = document.getElementById("fan");
   var palette = [

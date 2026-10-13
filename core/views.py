@@ -21,3 +21,7 @@ def home(request):
             "cod_culoare": COD_CULOARE_IMPLICIT,
         },
     )
+
+
+def cookies(request):
+    return render(request, "core/cookies.html")

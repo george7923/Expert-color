@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block title %}Politica de cookie-uri – {{ site.name }}{% endblock %}
+
+{% block content %}
+<section class="section prose">
+  <h1>Politica de cookie-uri</h1>
+
+  <h2>Ce sunt cookie-urile</h2>
+  <p>Cookie-urile sunt fișiere mici pe care un site le salvează în browserul tău. Ele pot reține preferințe sau pot fi folosite de servicii terțe integrate în pagină.</p>
+
+  <h2>Ce folosim pe acest site</h2>
+  <ul>
+    <li><strong>Alegerea ta privind cookie-urile.</strong> O păstrăm în memoria locală a browserului (<code>cookie_consent</code>), ca să nu te întrebăm la fiecare vizită. E necesară pentru funcționarea bannerului și nu ajunge la noi pe server.</li>
+    <li><strong>Google Maps (opțional).</strong> Harta din subsol este un serviciu Google. Se încarcă <em>doar dacă accepți</em>, iar Google poate seta cookie-uri proprii și îți poate prelua adresa IP. Detalii: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politica de confidențialitate Google</a>.</li>
+    <li><strong>Administrare.</strong> Zona de administrare a site-ului folosește cookie-uri de sesiune și de securitate, doar pentru persoanele autorizate.</li>
+  </ul>
+  <p>Nu folosim cookie-uri de publicitate sau de analiză.</p>
+
+  <h2>Cum îți schimbi alegerea</h2>
+  <p>Poți oricând să-ți retragi sau să-ți modifici acordul din linkul <button type="button" class="linklike" data-consent="open">Setări cookie-uri</button> din subsolul paginii. Poți șterge cookie-urile și din setările browserului.</p>
+
+  {% if site.email %}<h2>Contact</h2>
+  <p>Întrebări despre această politică: <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>{% endif %}
+</section>
+{% endblock %}
