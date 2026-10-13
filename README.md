@@ -1,6 +1,6 @@
-# Expert Color
+# Romcast Expert
 
-v0.1 — simple Django site showing the Expert Color touch-up paint products (spray, marker, punctator, touch-up bottle), drawn with HTML/CSS/JS. The only database content is the `Roluri` and `Users` tables, with a single user holding the `Owner` role.
+v0.1 — simple Django site showing the Romcast Expert touch-up paint products (spray, marker, punctator, touch-up bottle), drawn with HTML/CSS/JS. The only database content is the `Roluri` and `Users` tables, with a single user holding the `Owner` role.
 
 ## Run
 

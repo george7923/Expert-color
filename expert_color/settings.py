@@ -104,7 +104,7 @@ AUTH_USER_MODEL = "core.Utilizator"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Public contact details shown in the header/footer; leave empty to hide an item.
-SITE_NAME = "Expert Color"
+SITE_NAME = "Romcast Expert"
 SITE_ADDRESS = os.environ.get("SITE_ADDRESS", "")
 SITE_PHONE = os.environ.get("SITE_PHONE", "")
 SITE_EMAIL = os.environ.get("SITE_EMAIL", "")
