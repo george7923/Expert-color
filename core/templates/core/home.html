@@ -1,6 +1,7 @@
 {% extends "core/base.html" %}
 
-{% block title %}{{ site.name }} – Spray vopsea auto, doar {{ pret_spray }} lei{% endblock %}
+{% block title %}Vopsea auto și spray la cod culoare – Constanța | {{ site.name }}{% endblock %}
+{% block og_title %}Vopsea auto și spray la cod culoare – Constanța | {{ site.name }}{% endblock %}
 
 {% block content %}
 <section class="hero">
@@ -77,7 +78,7 @@
 
 <section class="section" id="produse">
   <h2>Produse</h2>
-  <p class="lead">Toate se prepară după codul de culoare al mașinii tale.</p>
+  <p class="lead">Vopsele auto preparate după codul de culoare al mașinii tale.</p>
   <ul class="cards">
     {% for p in produse %}
     <li class="card">

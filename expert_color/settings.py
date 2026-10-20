@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     "core",
 ]
 
@@ -105,6 +106,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Public contact details shown in the header/footer; leave empty to hide an item.
 SITE_NAME = "Romcast Expert"
+SITE_DESCRIPTION = "Vopsele auto preparate după codul de culoare al mașinii tale: spray, marker, punctator și sticluță de retuș. Constanța."
 SITE_ADDRESS = os.environ.get("SITE_ADDRESS", "")
 SITE_PHONE = os.environ.get("SITE_PHONE", "")
 SITE_EMAIL = os.environ.get("SITE_EMAIL", "")

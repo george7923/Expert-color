@@ -4,7 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ site.name }}{% endblock %}</title>
-  <meta name="description" content="{% block description %}Vopsea auto preparată după codul de culoare al mașinii tale: spray, marker, punctator și sticluță de retuș.{% endblock %}">
+  <meta name="description" content="{{ description|default:site.description }}">
+  <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{% block og_title %}{{ site.name }}{% endblock %}">
+  <meta property="og:description" content="{{ description|default:site.description }}">
+  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+  <script type="application/ld+json">{{ site.json_ld }}</script>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="{% static 'core/css/site.css' %}">
 </head>
@@ -42,7 +50,7 @@
     <div class="footer-grid">
       <div class="footer-info">
         <p class="brand"><svg aria-hidden="true"><use href="#icon-car"/></svg> {{ site.name }}</p>
-        <p>Vopsea auto preparată după codul de culoare al mașinii tale.</p>
+        <p>Vopsele auto preparate după codul de culoare al mașinii tale.</p>
         <ul>
           <li><a href="{% url 'home' %}#produse">Produse</a></li>
           <li><a href="{% url 'home' %}#cum-functioneaza">Cum funcționează</a></li>
