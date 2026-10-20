@@ -21,6 +21,6 @@ If you ran an earlier version, reset its database first: `docker compose down -v
 Production uses `docker-compose.prod.yml` (gunicorn, Postgres, and Caddy for automatic HTTPS) and `Caddyfile`, which names the domain.
 
 1. Point the domain's DNS `A` records (`@` and `www`) at the server's IP.
-2. On the server (Docker installed, ports 80 and 443 open): clone the repo, then `cp .env.prod.example .env` and fill in every value.
+2. On the server (Docker installed, ports 80 and 443 open): clone the repo, then run `python3 scripts/setup_env.py` to create `.env`.
 3. `docker compose -f docker-compose.prod.yml up -d --build`
 4. Update later with `git pull` and the same `up -d --build`.
