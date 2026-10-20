@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -14,6 +15,8 @@ PRODUSE = [
 
 def home(request):
     produse = [{**p, "template": f"core/products/{p['slug']}.html"} for p in PRODUSE]
+    pret_min = min(p["pret"] for p in PRODUSE)
+    contact = f" Sună {settings.SITE_PHONE}." if settings.SITE_PHONE else ""
     return render(
         request,
         "core/home.html",
@@ -21,9 +24,10 @@ def home(request):
             "produse": produse,
             "pret_spray": PRODUSE[0]["pret"],
             "cod_culoare": COD_CULOARE_IMPLICIT,
+            "titlu": f"Vopsea auto Constanța – după cod culoare, de la {pret_min} lei",
             "description": (
-                "Vopsele auto preparate după codul de culoare al mașinii tale: spray vopsea auto "
-                f"de la {PRODUSE[0]['pret']} lei, marker, punctator și sticluță de retuș. Romcast Expert, Constanța."
+                "Vopsea auto preparată după codul culorii mașinii tale: spray, marker, punctator, "
+                f"sticluță. De la {pret_min} lei.{contact} {settings.SITE_NAME}, Constanța."
             ),
         },
     )
